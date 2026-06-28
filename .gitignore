@@ -47,3 +47,6 @@ tmp/
 
 # Assignment brief / binary docs (reviewer already has these)
 *.pdf
+
+# Local AI-agent contributor guide (not part of the submission)
+CLAUDE.md
