@@ -1,0 +1,12 @@
+product_id: PROD_CURRENT
+name: Current Account
+product_type: CURRENT
+product_class: DEPOSIT
+is_active: true
+min_age: 18
+max_age: 100
+min_monthly_income_rupees: 0
+requires_kyc: true
+talking_points:
+  - Built for business cash flow
+  - High transaction limits

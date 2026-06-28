@@ -1,0 +1,70 @@
+# Scoring configuration (designed in docs/data-model.md §6).
+# Editing weights / thresholds / triggers here changes scoring behaviour WITHOUT
+# code changes. Monetary thresholds are in integer paise (₹ equivalent in comments).
+
+value:
+  # Weights sum to 1.0 — relationship worth, independent of product.
+  weights:
+    aum: 0.40
+    product_depth: 0.20
+    tenure: 0.15
+    income: 0.25
+  aum_bands_paise: [20000000, 100000000, 250000000]  # ₹2L, ₹10L, ₹25L -> 4 bands
+  product_depth_cap: 4
+  tenure_cap_months: 96          # 8 years
+  income_cap_paise: 30000000     # ₹3,00,000 / month
+
+propensity:
+  # Weights sum to 1.0 — static fit for the product.
+  weights:
+    affordability: 0.30
+    debt_burden: 0.25
+    utilization: 0.20
+    delinquency: 0.15
+    life_stage: 0.10
+  max_foir: 0.50                 # max acceptable EMI-to-income ratio
+  utilization_cap: 0.40          # card utilization considered "fully unhealthy"
+  income_headroom_multiple: 2.0  # income should comfortably clear min_income
+  life_stage:                    # ideal age band per product type
+    PERSONAL_LOAN: [25, 50]
+    AUTO_LOAN: [25, 55]
+    HOME_LOAN: [28, 55]
+    CREDIT_CARD: [22, 60]
+  # Additive boosts (points) per detected trigger — this is the "this month" engine.
+  trigger_boosts:
+    emi_ending: 12
+    fd_maturing: 10
+    large_outflow: 8
+    salary_hike: 6
+    festival_window: 4
+
+triggers:
+  window_days: 31
+  large_outflow_multiple: 1.5    # a debit >= 1.5x monthly income is "large"
+  salary_hike_pct: 10.0          # latest salary >= +10% vs trailing median
+  festival_months: [9, 10, 11]   # Sep-Nov (festival season)
+
+ranking:
+  value_weight: 0.40
+  propensity_weight: 0.60
+
+confidence:
+  high_min_transactions: 40
+  medium_min_transactions: 15
+
+compliance:
+  banned_phrases:
+    - "guaranteed"
+    - "guaranteed approval"
+    - "pre-approved"
+    - "assured returns"
+    - "100% approval"
+    - "no questions asked"
+    - "instant approval guaranteed"
+  require_opt_out: true
+  opt_out_markers:
+    - "opt out"
+    - "opt-out"
+    - "STOP"
+    - "unsubscribe"
+  max_chars: 700

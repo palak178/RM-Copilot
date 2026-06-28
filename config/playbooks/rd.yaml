@@ -1,0 +1,13 @@
+product_id: PROD_RD
+name: Recurring Deposit
+product_type: RD
+product_class: DEPOSIT
+is_active: true
+min_age: 18
+max_age: 100
+min_monthly_income_rupees: 0
+requires_kyc: true
+indicative_interest_rate_pct: 6.75
+talking_points:
+  - Build a disciplined savings habit
+  - Small monthly commitment

@@ -1,0 +1,14 @@
+product_id: PROD_HOME_LOAN
+name: Home Loan
+product_type: HOME_LOAN
+product_class: LENDING
+is_active: true
+min_age: 23
+max_age: 65
+min_monthly_income_rupees: 40000
+requires_kyc: true
+typical_ticket_size_rupees: 5000000
+indicative_interest_rate_pct: 8.5
+talking_points:
+  - Long-tenure financing at attractive rates
+  - Balance-transfer and top-up options

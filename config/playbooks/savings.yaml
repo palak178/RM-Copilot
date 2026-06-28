@@ -1,0 +1,12 @@
+product_id: PROD_SAVINGS
+name: Savings Account
+product_type: SAVINGS
+product_class: DEPOSIT
+is_active: true
+min_age: 18
+max_age: 100
+min_monthly_income_rupees: 0
+requires_kyc: true
+talking_points:
+  - Zero-balance digital savings with instant UPI
+  - Higher interest on idle balances

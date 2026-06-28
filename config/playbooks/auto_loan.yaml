@@ -1,0 +1,14 @@
+product_id: PROD_AUTO_LOAN
+name: Auto Loan
+product_type: AUTO_LOAN
+product_class: LENDING
+is_active: true
+min_age: 21
+max_age: 65
+min_monthly_income_rupees: 20000
+requires_kyc: true
+typical_ticket_size_rupees: 800000
+indicative_interest_rate_pct: 9.5
+talking_points:
+  - Competitive on-road financing
+  - Fast approval on salaried income

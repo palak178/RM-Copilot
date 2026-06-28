@@ -1,0 +1,13 @@
+product_id: PROD_FD
+name: Fixed Deposit
+product_type: FD
+product_class: DEPOSIT
+is_active: true
+min_age: 18
+max_age: 100
+min_monthly_income_rupees: 0
+requires_kyc: true
+indicative_interest_rate_pct: 7.0
+talking_points:
+  - Lock in assured returns
+  - Flexible tenures; reinvest at maturity

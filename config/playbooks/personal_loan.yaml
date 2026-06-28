@@ -1,0 +1,15 @@
+product_id: PROD_PERSONAL_LOAN
+name: Personal Loan
+product_type: PERSONAL_LOAN
+product_class: LENDING
+is_active: true
+min_age: 21
+max_age: 60
+min_monthly_income_rupees: 25000
+requires_kyc: true
+max_active_unsecured_loans: 2
+typical_ticket_size_rupees: 500000
+indicative_interest_rate_pct: 11.5
+talking_points:
+  - Quick disbursal for planned expenses
+  - Flexible tenure; no collateral
