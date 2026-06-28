@@ -27,7 +27,7 @@ from rm_copilot.observability.render import (
     tool_status,
 )
 
-st.set_page_config(page_title="RM Copilot — Agent Console", page_icon="🏦", layout="wide")
+st.set_page_config(page_title="RM Copilot · Agent Console", page_icon="🏦", layout="wide")
 
 _DEFAULT_MODEL = {"gemini": get_settings().llm_model, "anthropic": "claude-opus-4-8"}
 _KEY_ENV_HINT = {
@@ -303,7 +303,8 @@ def main() -> None:
 
     app = _build_app(provider, model, api_key)
 
-    st.title("🏦 RM Copilot — Agent Console")
+    st.title("🏦 RM Copilot")
+    st.markdown("##### Agentic AI for Banking CRM &nbsp;·&nbsp; :blue[**Agent Console**]")
     st.caption(
         f"A single agent running a transparent cognitive loop · provider `{app.provider}` · "
         f"model `{app.model}`"
