@@ -131,14 +131,6 @@ no key.
 3. *"Redo that message in Hindi"* → localized re-draft, guardrails re-run.
 4. *"Show only the ones from Indore"* → filters the current set in place.
 
-## Screenshots
-
-> _Placeholders — drop captures/GIFs here for the submission._
-
-| Agent Console (live cognitive loop) | Ranked prospects + reason codes | Tool-execution timeline |
-|---|---|---|
-| `![Agent Console](docs/images/console.png)` | `![Prospects](docs/images/prospects.png)` | `![Timeline](docs/images/timeline.gif)` |
-
 ## Project structure
 
 ```
