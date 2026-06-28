@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+build/
+dist/
+*.so
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Tooling caches
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Secrets — never commit
+.env
+.env.*
+!.env.example
+
+# Runtime artifacts (seeded SQLite DB, logs) — reproducible from the seed
+var/
+*.db
+*.sqlite3
+*.log
+
+# Streamlit
+.streamlit/secrets.toml
+
+# OS / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+
+# Scratch
+scratch/
+tmp/
+
+# Assignment brief / binary docs (reviewer already has these)
+*.pdf
