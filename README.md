@@ -146,8 +146,8 @@ python ui/cli.py                                                    # or: make r
 ```
 
 The LLM provider/model is **selectable in the Streamlit sidebar** (Gemini or Anthropic) or
-via `RM_COPILOT_LLM_*` env vars / `.env`. The Streamlit app seeds the dataset automatically on
-first run; the CLI/API expect `make seed` to have been run.
+via `RM_COPILOT_LLM_*` env vars / `.env`. All surfaces read the seeded SQLite database, so run
+`make seed` (or `python scripts/seed_db.py`) once — the Verify step above — before launching them.
 
 ### Demo flow (≈2 minutes)
 1. *"Find high-value personal-loan prospects this month"* → ranked list + top-3 drafts + live loop.
