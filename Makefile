@@ -24,9 +24,10 @@ help:
 	@echo "clean        remove caches and runtime artifacts"
 
 setup:
-	$(PYTHON) -m pip install -e ".[dev]"
+	$(PYTHON) -m pip install -e ".[dev,seed,llm,ui,api]"
 
-# Per-milestone installs (recommended): .[dev,seed] at M1, add llm at M4, add ui at M5.
+# Installs everything needed to test and run all surfaces. For the Anthropic provider
+# also run: pip install -e ".[anthropic]".
 
 hooks:
 	pre-commit install
