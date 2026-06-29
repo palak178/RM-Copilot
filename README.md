@@ -173,6 +173,4 @@ docs/             discovery.md · solution.md · architecture.md
 | [`docs/solution.md`](docs/solution.md) | How the problem was solved — each subsystem and the reasoning behind it |
 | [`docs/architecture.md`](docs/architecture.md) | The technical design — component/runtime/sequence/data-flow diagrams |
 
-## License
 
-MIT — see [`LICENSE`](LICENSE).
