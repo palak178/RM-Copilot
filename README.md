@@ -101,15 +101,9 @@ data-flow diagrams.
 | API | **FastAPI + SSE** | Production-shaped; streams the reasoning trace |
 | Quality | **pytest** (120 tests), **ruff**, **pre-commit** | Lint-clean, fast, no token spend in tests |
 
-## Prerequisites
-
-- **Python 3.12+** and **git**.
-- `make` is optional — every step below shows the **raw command** too, so Windows users
-  without `make` (or anyone) can run it directly. (`make` works in Git Bash / WSL / macOS / Linux.)
-- An **LLM API key** to run the agent end-to-end — a free **Gemini** key works:
-  https://aistudio.google.com/apikey (tests and the CLI/UI scaffolding need **no** key).
-
 ## Setup
+
+Requires **Python 3.12+** and **git**. Run these commands in order:
 
 ```bash
 # 1. Clone
@@ -118,36 +112,32 @@ cd RM-Copilot
 
 # 2. Create & activate a virtual environment
 python -m venv .venv
-source .venv/bin/activate            # Windows (PowerShell): .venv\Scripts\Activate.ps1
+source .venv/bin/activate            # Windows: .venv\Scripts\activate
 
-# 3. Install the package with everything needed to test + run all surfaces
-pip install -e ".[dev,seed,llm,ui,api]"     # or: make setup
-#   extras: dev=tooling/tests · seed=synthetic data · llm=Gemini · ui=Streamlit/CLI · api=FastAPI
-#   for the Anthropic provider also add:  pip install -e ".[anthropic]"
+# 3. Install (everything needed to test + run every surface)
+pip install -e ".[dev,seed,llm,ui,api]"
 
-# 4. Configure secrets
-cp .env.example .env                 # then edit .env and set your key:
-#   RM_COPILOT_LLM_API_KEY=<your-gemini-key>     (or GEMINI_API_KEY=...)
+# 4. Add your LLM API key   (free Gemini key: https://aistudio.google.com/apikey)
+cp .env.example .env                 # then set RM_COPILOT_LLM_API_KEY=<your-key> in .env
+
+# 5. Seed the demo database (~500 customers)
+python scripts/seed_db.py
+
+# 6. Launch the app
+streamlit run ui/streamlit_app.py    # → http://localhost:8501
 ```
 
-## Verify
+## Run other surfaces / tests
 
 ```bash
-python scripts/seed_db.py            # or: make seed   → builds the ~500-customer dataset
-pytest                               # or: make test   → 120 tests (mocked LLM, no key, no network)
+pytest                                                         # 120 tests (no key, no network)
+python ui/cli.py                                               # conversational CLI
+uvicorn rm_copilot.api.app:create_app --factory --port 8000    # API → http://localhost:8000/docs
 ```
 
-## How to run
-
-```bash
-streamlit run ui/streamlit_app.py                                   # or: make ui   → http://localhost:8501  (recommended demo)
-uvicorn rm_copilot.api.app:create_app --factory --port 8000         # or: make api  → http://localhost:8000/docs
-python ui/cli.py                                                    # or: make run  → conversational CLI (streams the trace)
-```
-
-The LLM provider/model is **selectable in the Streamlit sidebar** (Gemini or Anthropic) or
-via `RM_COPILOT_LLM_*` env vars / `.env`. All surfaces read the seeded SQLite database, so run
-`make seed` (or `python scripts/seed_db.py`) once — the Verify step above — before launching them.
+**`make` shortcuts** (optional): `make setup` · `make seed` · `make test` · `make ui` · `make api` · `make run`.
+The LLM provider/model is selectable in the Streamlit sidebar (Gemini or Anthropic) or via
+`RM_COPILOT_LLM_*` / `.env`. All surfaces read the seeded database, so run step 5 once first.
 
 ### Demo flow (≈2 minutes)
 1. *"Find high-value personal-loan prospects this month"* → ranked list + top-3 drafts + live loop.
